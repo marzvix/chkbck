@@ -1,0 +1,75 @@
+chkbck
+
+05 dec 2020
+
+%!target: man
+%!encoding: UTF-8
+
+%!postproc(man): ' \(#\w+\)' ''
+
+%!options(html): --mask-email --toc
+%!postproc(html): <HEAD> '<HEAD>\n<STYLE>body{margin:3em;} pre{background:#ffc;}</STYLE>'
+
+%% LOG
+%% dom,  5 de jan de 2020 17:20:47: created
+%% Created: qui, 27 de mar de 2014
+
+= NAME =[name]
+
+chkbck - checkup daily backup savesets
+
+= SYNOPSIS =
+
+**chckbck** [dd-mm-aaaa] [server]
+
+= DESCRIPTION =
+
+List compressed backup files - firebird savesets - stored in a server on specific directories organized hierarchically by date.
+
+If date is not provided, uses today's date.
+
+If server is not provided, use hardcoded configured one
+
+
+= EXAMPLE =
+
+```
+$ ./chkbck 04-01-2020
+Backups em 04-01-2020
+Repositorio
+        server: ckcont.duckdns.org
+        dir:    /var/local/TI/BACKUPS/APOLLO
+Savesets encontrados: 5
+        [ 1] 07:42                              4227552 (bytes) gerado às 4
+        [ 2] 07:43                              4228064 (bytes) gerado às 4
+        [ 3] 07:49                              4228576 (bytes) gerado às 4
+        [ 4] 07:49                              4229088 (bytes) gerado às 4
+        [ 5] 07:49                              4229600 (bytes) gerado às 4
+Processos encontrados: 5
+        [ 1] 20200104_APOLLO_22004.gbk.gz
+        [ 2] 20200104_BD_APOLLO_22004.gbk.gz
+        [ 3] 20200104_BD_DADOS_22004.gbk.gz
+        [ 4] 20200104_CONFIG_22004.fbk.gz
+        [ 5] 20200104_LOGS_22004.fbk.gz
+Recuperar todos [S/N/X] ?
+```
+
+
+= WISHLIST =
+
+```
+- Configuration by config file
+- Test savesets
+- Copy to local
+- Checksuming
+- Log report
+- Restore savesets
+- Multiple backups monitoring (now just specific one)
+```
+
+= CONFIGURATION =
+
++ ssh access to server
++ server url (hardcoded)
++ directory with saveses (hardcoded)
++ recompile 

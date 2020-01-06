@@ -6,3 +6,7 @@
 bin/*
 etc/*
 tmp/*
+**/*.stackdump
+**/*.gz
+**/*#
+**/.#*
